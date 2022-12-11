@@ -1,4 +1,4 @@
-import TopNavbar from "./components/TopNavbar";
+import TopNavbar from "./components/Nav/TopNavbar";
 
 function App() {
   return (
