@@ -1,0 +1,15 @@
+.div {
+  border: 2px solid #7867fc;
+  border-radius: 20px;
+  margin-top: 10px;
+  width: 800px;
+  text-align: center;
+  margin: 50px auto auto auto;
+  padding: 10px;
+}
+
+@media (min-width: 0px) {
+  body {
+    padding-top: 50px;
+  }
+}

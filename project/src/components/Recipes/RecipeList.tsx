@@ -1,17 +1,13 @@
-import recipes from "./Recipes";
+import TopNavbar from "../Nav/TopNavbar";
+import Recipe from "./Recipes";
 import RecipeItem from "./RecipeItem";
 
-// const RecipeList: React.FC<RecipeListProps> = ({
-//   recipes,
-// }: RecipeListProps) => {
+interface RecipeProps {
+  recipes: typeof Recipe;
+}
 
-// interface RecipesItems{
-//     recipesData: 
-// }
-
-const RecipeList = ({ data }: { data: typeof recipes }) => {
-    // use interface from Recipes
-  if (!data?.length) {
+const RecipeList: React.FC<RecipeProps> = ({ recipes }: RecipeProps) => {
+  if (!recipes?.length) {
     return (
       <div>
         <h1>No recipes found!</h1>
@@ -21,12 +17,13 @@ const RecipeList = ({ data }: { data: typeof recipes }) => {
 
   return (
     <div>
-      {data.map(({ id, recipeName, ingredients }) => (
+      <TopNavbar />
+      {recipes.map((item) => (
         <RecipeItem
-          key={id}
-          id={id}
-          recipeName={recipeName}
-          ingredients={ingredients}
+          key={item.id}
+          id={item.id}
+          recipeName={item.recipeName}
+          ingredients={item.ingredients}
         />
       ))}
     </div>

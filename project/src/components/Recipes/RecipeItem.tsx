@@ -1,4 +1,4 @@
-import RecipeList from "./Recipes";
+// import RecipeList from "./Recipes";
 
 // const RecipeItem = ({data}: {data: typeof RecipeList}) => {
 //   return (
@@ -10,18 +10,22 @@ import RecipeList from "./Recipes";
 //   );
 // };
 
+import { Link } from "react-router-dom";
+
+import classes from "./RecipeItem.module.css";
+
 const RecipeItem = (props: {
   id: string;
   recipeName: string;
   ingredients: string;
 }) => {
   return (
-    <div>
-      <div>
-        {props.id}
-        <h2>{props.recipeName}</h2>
-        <p>{props.ingredients}</p>
-      </div>
+    <div className={classes.div}>
+      <h2>{props.recipeName}</h2>
+      <p>{props.ingredients}</p>
+      <Link className="btn" to="/recipe-details">
+        Details
+      </Link>
     </div>
   );
 };
