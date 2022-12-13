@@ -1,0 +1,10 @@
+.div {
+  border: 2px solid #ae45ff;
+  border-radius: 20px;
+  margin-top: 10px;
+  height: max-content;
+  width: 800px;
+  text-align: center;
+  margin: 50px auto auto auto;
+  padding: 10px;
+}

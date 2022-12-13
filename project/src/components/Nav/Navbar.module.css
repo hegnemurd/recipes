@@ -1,0 +1,17 @@
+.NavBar {
+  background-color: #ae45ff;
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.navbar-brand:hover {
+  color: #7c03d8;
+}
+
+.navbar-brand:focus {
+  color: white;
+}
