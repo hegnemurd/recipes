@@ -1,5 +1,6 @@
 interface Recipe {
   id: string;
+  img: string;
   recipeName: string;
   ingredients: string[];
 }
@@ -7,6 +8,7 @@ interface Recipe {
 export const recipes: Recipe[] = [
   {
     id: "r1",
+    img: "https://images.unsplash.com/photo-1614777986387-015c2a89b696?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     recipeName: "Spaghetti Bolognese",
     ingredients: [
       "Olive oil",
@@ -20,6 +22,7 @@ export const recipes: Recipe[] = [
   },
   {
     id: "r2",
+    img: "https://images.unsplash.com/photo-1631292784640-2b24be784d5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
     recipeName: "Chicken Curry",
     ingredients: [
       "Olive oil",
@@ -36,6 +39,7 @@ export const recipes: Recipe[] = [
   },
   {
     id: "r3",
+    img: "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     recipeName: "Lentil Soup",
     ingredients: [
       "Vegetable stock",

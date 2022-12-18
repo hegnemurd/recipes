@@ -4,8 +4,13 @@ import classes from "./RecipeDetails.module.css";
 const RecipeDetails = (props: Recipe) => {
   return (
     <div className={classes.div}>
-      <p>{props.recipeName}</p>
-      <p>{props.ingredients}</p>
+      <img alt="recipe" src={props.img} className={classes.img}/>
+      <h2>{props.recipeName}</h2>
+      <ul>
+        {props.ingredients.map((ingredient: any) => (
+          <li key={ingredient}>{ingredient}</li>
+        ))}
+      </ul>
     </div>
   );
 };

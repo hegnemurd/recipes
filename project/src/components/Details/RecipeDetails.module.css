@@ -8,3 +8,9 @@
   margin: 50px auto auto auto;
   padding: 10px;
 }
+
+.img {
+  display: block;
+  width: 100%;
+
+}

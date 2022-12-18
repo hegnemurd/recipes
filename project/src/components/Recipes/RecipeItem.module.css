@@ -1,15 +1,29 @@
-.div {
-  border: 2px solid #AE45FF;
+.col {
+  border: 2px solid #ae45ff;
   border-radius: 20px;
-  margin-top: 10px;
-  width: 800px;
   text-align: center;
-  margin: 50px auto auto auto;
-  padding: 10px;
+  margin-top: 50px;
+}
+
+img {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+ul {
+  text-align: start;
+  justify-content: center;
+  text-align: start;
+}
+
+.li {
+  display: flex;
 }
 
 .button {
-  background-color: #AE45FF;
+  background-color: #ae45ff;
   border: none;
 }
 

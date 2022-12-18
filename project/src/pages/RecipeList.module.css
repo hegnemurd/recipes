@@ -1,0 +1,7 @@
+.container {
+  max-width: max-content;
+}
+
+.row {
+  justify-content: center;
+}
