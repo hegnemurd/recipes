@@ -9,9 +9,26 @@
 }
 
 .navbar-brand:hover {
-  color: #7c03d8;
+  color: #6600b4;
 }
+
 
 .navbar-brand:focus {
   color: white;
+}
+
+.button {
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: white;
+  color: #ae45ff;
+  font-weight: 600;
+}
+
+.button:focus {
+  background-color: white;
+  color: #ae45ff;
+  font-weight: 600;
 }
