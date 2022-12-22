@@ -1,27 +1,29 @@
 import { Link } from "react-router-dom";
 
 import Recipe from "../../models/Recipes";
-import { Button, Col } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import classes from "./RecipeItem.module.css";
 
 const RecipeItem: React.FC<Recipe> = (props: Recipe) => {
   return (
-    <Col md={3} className={classes.col}>
-      <div>
-        <img alt="recipe" src={props.img} className="height: 200px" />
-        <h2>{props.recipeName}</h2>
-        <ul>
-          {props.ingredients.map((ingredient: string) => (
-            <li key={ingredient}>{ingredient}</li>
-          ))}
-        </ul>
+    <Card className={classes.card}>
+      <Card.Img alt="recipe" src={props.img} className="height: 200px" />
+      <Card.Body>
+        <Card.Title className={classes.title}>{props.recipeName}</Card.Title>
+        <Card.Body>
+          <ul>
+            {props.ingredients.map((ingredient: string) => (
+              <li key={ingredient}>{ingredient}</li>
+            ))}
+          </ul>
+        </Card.Body>
         <Link className="btn" to={`/recipe-details/${props.id}`}>
-          <Button className={classes.button} variant="dark">
+          <Button variant="outline-light" className={classes.button}>
             Details
           </Button>
         </Link>
-      </div>
-    </Col>
+      </Card.Body>
+    </Card>
   );
 };
 

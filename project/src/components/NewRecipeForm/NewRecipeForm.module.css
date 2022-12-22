@@ -6,8 +6,37 @@
   padding: 10px;
 }
 
-.form-group {
-    border: 2px solid #ae45ff;
-    border-radius: 10px;
+.form-label {
+  display: flex;
+  padding-left: 14px;
+  font-size: large;
+}
 
+.form-input {
+  border: 2px solid #ae45ff;
+  border-radius: 15px;
+  height: fit-content;
+}
+
+.button {
+  font-weight: 600;
+  background-color: #ae45ff;
+  border: 2px solid #ae45ff;
+  margin: 10px;
+  display: flex;
+  justify-content: right;
+}
+
+.button:hover {
+  border: 2px solid #ae45ff;
+  background-color: white;
+  color: #ae45ff;
+  font-weight: 600;
+}
+
+.button:focus {
+  color: #ae45ff;
+  border: #ae45ff;
+  background-color: white;
+  font-weight: 600;
 }

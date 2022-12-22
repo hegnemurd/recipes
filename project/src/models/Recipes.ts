@@ -11,7 +11,7 @@ export const recipes: Recipe[] = [
     img: "https://images.unsplash.com/photo-1614777986387-015c2a89b696?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     recipeName: "Spaghetti Bolognese",
     ingredients: [
-      "Olive oil",
+      "olive oil",
       "onions",
       "garlic",
       "rosemary",
@@ -25,7 +25,7 @@ export const recipes: Recipe[] = [
     img: "https://images.unsplash.com/photo-1631292784640-2b24be784d5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
     recipeName: "Chicken Curry",
     ingredients: [
-      "Olive oil",
+      "olive oil",
       "onion",
       "garlic",
       "ginger",
@@ -42,7 +42,7 @@ export const recipes: Recipe[] = [
     img: "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     recipeName: "Lentil Soup",
     ingredients: [
-      "Vegetable stock",
+      "vegetable stock",
       "red lentils",
       "carrots",
       "leeks",
