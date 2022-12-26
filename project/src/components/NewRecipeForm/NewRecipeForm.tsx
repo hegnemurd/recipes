@@ -11,7 +11,7 @@ import classes from "./NewRecipeForm.module.css";
 //   ingredients?: string[];
 // };
 
-const NewRecipeForm = () => {
+const NewRecipeForm = (props: any) => {
   //   const [newRecipes, setNewRecipe] = useState<Recipe>();
   const [enteredId, setEnteredId] = useState("");
   const [enteredImg, setEnteredImg] = useState("");
@@ -46,7 +46,8 @@ const NewRecipeForm = () => {
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    console.log(enteredId, enteredImg, enteredName, enteredIngredients);
+    // console.log(enteredId, enteredImg, enteredName, enteredIngredients);
+    props.newRecipeData(enteredId, enteredImg, enteredName, enteredIngredients);
   };
 
   return (

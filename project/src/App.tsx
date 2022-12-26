@@ -6,7 +6,12 @@ import Details from "./pages/Details";
 import { recipes } from "./models/Recipes";
 import NewRecipeForm from "./components/NewRecipeForm/OriginalNewRecipeForm";
 
+
+
 function App() {
+  const newRecipeData = (newRecipeData: any) => {
+    recipes.push(newRecipeData);
+  }
   return (
     <div>
       <Navbar />
@@ -14,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<RecipeList items={recipes} />}></Route>
           <Route path="/recipe-details/:recipeId" element={<Details />}></Route>
-          <Route path="/new-recipe" element={<NewRecipeForm />} />
+          <Route path="/new-recipe" element={<NewRecipeForm newRecipeData={newRecipeData} />} />
         </Routes>
       </main>
     </div>
