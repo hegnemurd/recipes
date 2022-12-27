@@ -5,15 +5,16 @@ import { Button, Card } from "react-bootstrap";
 import classes from "./RecipeItem.module.css";
 
 const RecipeItem: React.FC<Recipe> = (props: Recipe) => {
+  // const array = [props.id, props.img, props.recipeName, props.ingredients]
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} id={props.id}>
       <Card.Img alt="recipe" src={props.img} className="height: 200px" />
       <Card.Body>
         <Card.Title className={classes.title}>{props.recipeName}</Card.Title>
         <Card.Body>
           <ul>
-            {props.ingredients.map((ingredient: string) => (
-              <li key={ingredient}>{ingredient}</li>
+            {props.ingredients.map((ingredient, id) => (
+              <li key={id}>{ingredient}</li>
             ))}
           </ul>
         </Card.Body>

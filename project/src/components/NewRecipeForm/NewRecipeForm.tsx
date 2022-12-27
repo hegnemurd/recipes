@@ -1,66 +1,41 @@
 import React, { useState } from "react";
 
 import { Button, Form } from "react-bootstrap";
-// import Recipe from "../../models/Recipes";
 import classes from "./NewRecipeForm.module.css";
 
-// type NewRecipe = {
-//   id?: string;
-//   img?: string;
-//   recipeName?: string;
-//   ingredients?: string[];
-// };
-
 const NewRecipeForm = (props: any) => {
-  //   const [newRecipes, setNewRecipe] = useState<Recipe>();
-  const [enteredId, setEnteredId] = useState("");
   const [enteredImg, setEnteredImg] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredIngredients, setEnteredIngredients] = useState([""]);
 
-  const idChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredId(e.currentTarget.value);
-    // return newId;
-    // return (newRecipes.id = newId);
-  };
-
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredImg(e.currentTarget.value);
-    // return newImage;
-    // return (newRecipe.img = newImage);
   };
 
   const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredName(e.currentTarget.value);
-    // return newName;
-    // return (newRecipe.recipeName = newName);
   };
 
   const ingredientsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newIngredients = e.currentTarget.value;
+    // needs fixing to accept ingredients with a space "chopped onion",
+    // rather than creating two different ingredients "chopped, onion"
     const newIngArray = newIngredients.split(/[ ,]+/);
     setEnteredIngredients(newIngArray);
-    // return newIngArray;
-    // return (newRecipe.ingredients = newIngArray);
   };
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    // console.log(enteredId, enteredImg, enteredName, enteredIngredients);
-    props.newRecipeData(enteredId, enteredImg, enteredName, enteredIngredients);
+    const uniqueId = Math.floor(Math.random() * 1000000).toString();
+
+    console.log(enteredImg, enteredName, enteredIngredients);
+
+    // all data is collected in props, but is not sent to app, other than the first prop
+    props.newRecipeData(enteredImg, uniqueId, enteredName, enteredIngredients);
   };
 
   return (
     <Form className={classes.form} onSubmit={onSubmitHandler}>
-      <Form.Group className="mb-3" controlId="formGroupTitle">
-        <Form.Label className={classes["form-label"]}>Id:</Form.Label>
-        <Form.Control
-          onChange={idChangeHandler}
-          type="id"
-          placeholder="recipe name as id"
-          className={classes["form-input"]}
-        />
-      </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupImage">
         <Form.Label className={classes["form-label"]}>Image Link:</Form.Label>
         <Form.Control
@@ -90,12 +65,7 @@ const NewRecipeForm = (props: any) => {
           className={classes["form-input"]}
         />
       </Form.Group>
-      <Button
-        variant="outline-light"
-        className={classes.button}
-        type="submit"
-        // onSubmit={onSubmitHandler}
-      >
+      <Button variant="outline-light" className={classes.button} type="submit">
         Save
       </Button>
       <Button variant="outline-light" className={classes.button}>
