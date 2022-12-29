@@ -1,9 +1,9 @@
-.div {
+.container {
   border: 2px solid #ae45ff;
   border-radius: 20px;
   margin-top: 10px;
   height: max-content;
-  width: 800px;
+  width: 70%;
   text-align: center;
   margin: 50px auto auto auto;
   padding: 10px;
@@ -12,5 +12,16 @@
 .img {
   display: block;
   width: 100%;
+  margin: 20px;
+}
 
+.col {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.li {
+  padding: 2.5%;
 }

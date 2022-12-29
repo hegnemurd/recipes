@@ -1,0 +1,21 @@
+.button {
+  font-weight: 600;
+  background-color: #ae45ff;
+  border: 2px solid #ae45ff;
+  margin: 10px;
+  width: 10rem;
+}
+
+.button:hover {
+  border: 2px solid #ae45ff;
+  background-color: white;
+  color: #ae45ff;
+  font-weight: 600;
+}
+
+.button:focus {
+  color: #ae45ff;
+  border: 2px solid #ae45ff !important;
+  background-color: white;
+  font-weight: 600;
+}

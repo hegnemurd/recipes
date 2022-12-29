@@ -19,7 +19,7 @@ const RecipeItem: React.FC<Recipe> = (props: Recipe) => {
           </ul>
         </Card.Body>
         <Link className="btn" to={`/recipe-details/${props.id}`}>
-          <Button variant="outline-light" className={classes.button}>
+          <Button className={classes.button}>
             Details
           </Button>
         </Link>

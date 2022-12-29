@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
-import { Button, Form } from "react-bootstrap";
+import { ButtonToolbar, Form } from "react-bootstrap";
+import CancelButton from "../UI/Buttons/CancelButton";
 import classes from "./NewRecipeForm.module.css";
+import SaveButton from "../UI/Buttons/SaveButton";
 
 const NewRecipeForm = (props: any) => {
   const [enteredImg, setEnteredImg] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredIngredients, setEnteredIngredients] = useState([""]);
+
+  const navigate = useNavigate();
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredImg(e.currentTarget.value);
@@ -28,10 +33,10 @@ const NewRecipeForm = (props: any) => {
     event.preventDefault();
     const uniqueId = Math.floor(Math.random() * 1000000).toString();
 
-    console.log(enteredImg, enteredName, enteredIngredients);
-
     // all data is collected in props, but is not sent to app, other than the first prop
-    props.newRecipeData(enteredImg, uniqueId, enteredName, enteredIngredients);
+    props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
+
+    navigate("/");
   };
 
   return (
@@ -65,12 +70,10 @@ const NewRecipeForm = (props: any) => {
           className={classes["form-input"]}
         />
       </Form.Group>
-      <Button variant="outline-light" className={classes.button} type="submit">
-        Save
-      </Button>
-      <Button variant="outline-light" className={classes.button}>
-        Cancel
-      </Button>
+      <ButtonToolbar>
+        <SaveButton />
+        <CancelButton />
+      </ButtonToolbar>
     </Form>
   );
 };

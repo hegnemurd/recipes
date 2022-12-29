@@ -1,0 +1,36 @@
+.modal-content {
+  border: 3px solid #ae45ff;
+  border-radius: 6px;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.button {
+  border: 2px solid #ae45ff;
+  background-color: #ae45ff;
+  font-weight: 600;
+  width: 5rem;
+  height: 2.5rem;
+  margin: 8px;
+}
+
+.button:hover {
+  border: 2px solid #ae45ff;
+  background-color: white;
+  color: #ae45ff;
+  font-weight: 600;
+}
+
+.button:focus {
+  color: #ae45ff !important;
+  border: 2px solid #ae45ff !important;
+  background-color: white !important;
+  font-weight: 600 !important;
+}

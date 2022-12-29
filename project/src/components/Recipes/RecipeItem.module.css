@@ -3,6 +3,7 @@
   border-radius: 20px;
   text-align: center;
   margin-top: 50px;
+  margin-bottom: 25px;
   width: 18rem;
   height: fit-content;
 }
@@ -52,10 +53,11 @@ ul {
 }
 
 .button:focus {
-  color: #ae45ff;
-  border: #ae45ff;
-  background-color: white;
-  font-weight: 600;
+  color: #ae45ff !important;
+  border: 2px solid #ae45ff !important;
+  background-color: white !important;
+  font-weight: 600 !important;
+  outline: none !important;
 }
 
 @media (min-width: 0px) {
