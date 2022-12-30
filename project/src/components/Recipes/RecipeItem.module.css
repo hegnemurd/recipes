@@ -43,6 +43,7 @@ ul {
   font-weight: 600;
   background-color: #ae45ff;
   border: 2px solid #ae45ff;
+  width: 6rem;
 }
 
 .button:hover {

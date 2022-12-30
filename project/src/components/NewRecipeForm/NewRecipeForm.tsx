@@ -7,6 +7,8 @@ import classes from "./NewRecipeForm.module.css";
 import SaveButton from "../UI/Buttons/SaveButton";
 
 const NewRecipeForm = (props: any) => {
+  // in here recognise isEditing and use the fields with ready data
+
   const [enteredImg, setEnteredImg] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredIngredients, setEnteredIngredients] = useState([""]);
@@ -23,9 +25,7 @@ const NewRecipeForm = (props: any) => {
 
   const ingredientsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newIngredients = e.currentTarget.value;
-    // needs fixing to accept ingredients with a space "chopped onion",
-    // rather than creating two different ingredients "chopped, onion"
-    const newIngArray = newIngredients.split(/[ ,]+/);
+    const newIngArray = newIngredients.split(/[,]+/);
     setEnteredIngredients(newIngArray);
   };
 
@@ -33,7 +33,6 @@ const NewRecipeForm = (props: any) => {
     event.preventDefault();
     const uniqueId = Math.floor(Math.random() * 1000000).toString();
 
-    // all data is collected in props, but is not sent to app, other than the first prop
     props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
 
     navigate("/");
@@ -60,7 +59,10 @@ const NewRecipeForm = (props: any) => {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
-        <Form.Label className={classes["form-label"]}>Ingredients:</Form.Label>
+        <Form.Label className={classes["form-label"]}>
+          Ingredients: &#40;write ingredients with commas separating them, like
+          the example below&#41;
+        </Form.Label>
         <Form.Control
           onChange={ingredientsChangeHandler}
           as="textarea"
