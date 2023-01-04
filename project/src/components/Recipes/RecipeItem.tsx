@@ -1,38 +1,29 @@
 import { Link } from "react-router-dom";
 
+import Recipe from "../../models/Recipes";
 import { Button, Card } from "react-bootstrap";
 import classes from "./RecipeItem.module.css";
-import Recipe from "../../models/Recipes";
 
-export interface RecipeItemProp {
-  recipe: Recipe;
-  editHandler: (id: string) => void;
-}
-
-const RecipeItem = (props: RecipeItemProp) => {
+const RecipeItem: React.FC<Recipe> = (props: Recipe) => {
+  // const array = [props.id, props.img, props.recipeName, props.ingredients]
   return (
-    <Card className={classes.card} id={props.recipe.id}>
-      <Card.Img alt="recipe" src={props.recipe.img} className="height: 200px" />
+    <Card className={classes.card} id={props.id}>
+      <Card.Img alt="recipe" src={props.img} className="height: 200px" />
       <Card.Body>
-        <Card.Title className={classes.title}>
-          {props.recipe.recipeName}
-        </Card.Title>
+        <Card.Title className={classes.title}>{props.recipeName}</Card.Title>
         <Card.Body>
           <ul>
-            {props.recipe.ingredients.map((ingredient, id) => (
+            {props.ingredients.map((ingredient, id) => (
               <li key={id}>{ingredient}</li>
             ))}
           </ul>
         </Card.Body>
-        <Link className="btn" to={`/recipe-details/${props.recipe.id}`}>
+        <Link className="btn" to={`/recipe-details/${props.id}`}>
           <Button className={classes.button}>Details</Button>
         </Link>
-        <Button
-          className={classes.button}
-          onClick={() => props.editHandler(props.recipe.id)}
-        >
-          Edit
-        </Button>
+        <Link className="btn" to={`/recipe-details/${props.id}/edit`}>
+          <Button className={classes.button}>Edit</Button>
+        </Link>
       </Card.Body>
     </Card>
   );

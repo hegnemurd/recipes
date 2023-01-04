@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
 import CancelButton from "../UI/Buttons/CancelButton";
 import classes from "./NewRecipeForm.module.css";
 import SaveButton from "../UI/Buttons/SaveButton";
+import { recipes } from "../../models/Recipes";
 
 const NewRecipeForm = (props: any) => {
   // in here recognise isEditing and use the fields with ready data
@@ -14,6 +16,11 @@ const NewRecipeForm = (props: any) => {
   const [enteredIngredients, setEnteredIngredients] = useState([""]);
 
   const navigate = useNavigate();
+
+  const params = useParams();
+  const { recipeId } = params;
+
+  const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredImg(e.currentTarget.value);
@@ -38,6 +45,7 @@ const NewRecipeForm = (props: any) => {
     navigate("/");
   };
 
+  if(recipeId !== undefined) {
   return (
     <Form className={classes.form} onSubmit={onSubmitHandler}>
       <Form.Group className="mb-3" controlId="formGroupImage">
@@ -47,6 +55,7 @@ const NewRecipeForm = (props: any) => {
           type="text"
           placeholder="www.something.com/recipe/image"
           className={classes["form-input"]}
+          value={editRecipe.img}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
@@ -78,6 +87,9 @@ const NewRecipeForm = (props: any) => {
       </ButtonToolbar>
     </Form>
   );
+} else if(recipeId === undefined) {
+  return <Link to="/new-recipe"></Link>
+} 
 };
 
 export default NewRecipeForm;

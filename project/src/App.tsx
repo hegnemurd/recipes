@@ -28,6 +28,10 @@ function App() {
           <Route path="/" element={<RecipeList items={recipes} />}></Route>
           <Route path="/recipe-details/:recipeId" element={<Details />}></Route>
           <Route
+            path="/recipe-details/:recipeId/edit"
+            element={<NewRecipeForm items={recipes} newRecipeData={newRecipeData} />}
+          ></Route>
+          <Route
             path="/new-recipe"
             element={<NewRecipeForm newRecipeData={newRecipeData} />}
           />
