@@ -9,8 +9,6 @@ import SaveButton from "../UI/Buttons/SaveButton";
 import { recipes } from "../../models/Recipes";
 
 const NewRecipeForm = (props: any) => {
-  // in here recognise isEditing and use the fields with ready data
-
   const [enteredImg, setEnteredImg] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredIngredients, setEnteredIngredients] = useState([""]);
@@ -45,22 +43,28 @@ const NewRecipeForm = (props: any) => {
     navigate("/");
   };
 
-  if(recipeId !== undefined) {
+  // if (editRecipe !== undefined) {
+
+  // } else {
+  //   return <Link to="/new-recipe"></Link>;
+  // }
+
   return (
-    <Form className={classes.form} onSubmit={onSubmitHandler}>
+    { editRecipe !== undefined ? <Form className={classes.form} onSubmit={onSubmitHandler}>
       <Form.Group className="mb-3" controlId="formGroupImage">
         <Form.Label className={classes["form-label"]}>Image Link:</Form.Label>
         <Form.Control
+          defaultValue={editRecipe.img}
           onChange={imageChangeHandler}
           type="text"
           placeholder="www.something.com/recipe/image"
           className={classes["form-input"]}
-          value={editRecipe.img}
-        />
+        ></Form.Control>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
         <Form.Label className={classes["form-label"]}>Title:</Form.Label>
         <Form.Control
+          defaultValue={editRecipe.recipeName}
           onChange={nameChangeHandler}
           type="name"
           placeholder="Mashed Potato"
@@ -69,10 +73,11 @@ const NewRecipeForm = (props: any) => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
         <Form.Label className={classes["form-label"]}>
-          Ingredients: &#40;write ingredients with commas separating them, like
-          the example below&#41;
+          Ingredients: &#40;write ingredients with commas separating them,
+          like the example below&#41;
         </Form.Label>
         <Form.Control
+          defaultValue={editRecipe.ingredients}
           onChange={ingredientsChangeHandler}
           as="textarea"
           rows={5}
@@ -85,11 +90,8 @@ const NewRecipeForm = (props: any) => {
         <SaveButton />
         <CancelButton />
       </ButtonToolbar>
-    </Form>
+    </Form> : <Link to="/new-recipe"></Link>}
   );
-} else if(recipeId === undefined) {
-  return <Link to="/new-recipe"></Link>
-} 
 };
 
 export default NewRecipeForm;
