@@ -5,7 +5,6 @@ import { Button, Card } from "react-bootstrap";
 import classes from "./RecipeItem.module.css";
 
 const RecipeItem: React.FC<Recipe> = (props: Recipe) => {
-  // const array = [props.id, props.img, props.recipeName, props.ingredients]
   return (
     <Card className={classes.card} id={props.id}>
       <Card.Img alt="recipe" src={props.img} className="height: 200px" />

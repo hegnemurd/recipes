@@ -43,14 +43,8 @@ const NewRecipeForm = (props: any) => {
     navigate("/");
   };
 
-  // if (editRecipe !== undefined) {
-
-  // } else {
-  //   return <Link to="/new-recipe"></Link>;
-  // }
-
-  return (
-    { editRecipe !== undefined ? <Form className={classes.form} onSubmit={onSubmitHandler}>
+  return editRecipe !== undefined ? (
+    <Form className={classes.form} onSubmit={onSubmitHandler}>
       <Form.Group className="mb-3" controlId="formGroupImage">
         <Form.Label className={classes["form-label"]}>Image Link:</Form.Label>
         <Form.Control
@@ -73,8 +67,8 @@ const NewRecipeForm = (props: any) => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
         <Form.Label className={classes["form-label"]}>
-          Ingredients: &#40;write ingredients with commas separating them,
-          like the example below&#41;
+          Ingredients: &#40;write ingredients with commas separating them, like
+          the example below&#41;
         </Form.Label>
         <Form.Control
           defaultValue={editRecipe.ingredients}
@@ -90,7 +84,9 @@ const NewRecipeForm = (props: any) => {
         <SaveButton />
         <CancelButton />
       </ButtonToolbar>
-    </Form> : <Link to="/new-recipe"></Link>}
+    </Form>
+  ) : (
+    <Link to="/new-recipe"></Link>
   );
 };
 

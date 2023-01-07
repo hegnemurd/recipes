@@ -13,6 +13,10 @@ function App() {
     enteredName: string,
     enteredIngredients: string[]
   ) => {
+    
+    const changedRecipe = recipes.find(changedRecipe => changedRecipe.id === uniqueId);
+    console.log(changedRecipe) // returns undefined
+
     recipes.push({
       id: uniqueId,
       img: enteredImg,
