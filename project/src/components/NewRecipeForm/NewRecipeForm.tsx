@@ -38,7 +38,26 @@ const NewRecipeForm = (props: any) => {
     event.preventDefault();
     const uniqueId = Math.floor(Math.random() * 1000000).toString();
 
-    props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
+    // set editRecipe to a type
+    // if statement expression to exclude adding it to props if editRecipe returns undefined
+    // ensure defaultValues are passed to App.tsx even if input is untouched
+
+    editRecipe !== undefined
+      ? props.newRecipeData(
+          uniqueId,
+          enteredImg,
+          enteredName,
+          enteredIngredients,
+          editRecipe.img,
+          editRecipe.recipeName,
+          editRecipe.ingredients
+        )
+      : props.newRecipeData(
+          uniqueId,
+          enteredImg,
+          enteredName,
+          enteredIngredients
+        );
 
     navigate("/");
   };

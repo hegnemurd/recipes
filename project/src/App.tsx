@@ -13,16 +13,23 @@ function App() {
     enteredName: string,
     enteredIngredients: string[]
   ) => {
-    
-    const changedRecipe = recipes.find(changedRecipe => changedRecipe.id === uniqueId);
-    console.log(changedRecipe) // returns undefined
-
     recipes.push({
       id: uniqueId,
       img: enteredImg,
       recipeName: enteredName,
       ingredients: enteredIngredients,
     });
+
+    console.log(uniqueId, enteredImg, enteredName, enteredIngredients);
+    // console.log(editRecipe.img, enteredImg, enteredName, enteredIngredients);
+
+    const changedRecipe = recipes.find(
+      (changedRecipe) => changedRecipe.id === uniqueId
+    );
+
+
+
+    console.log(changedRecipe);
   };
   return (
     <div>
@@ -33,7 +40,9 @@ function App() {
           <Route path="/recipe-details/:recipeId" element={<Details />}></Route>
           <Route
             path="/recipe-details/:recipeId/edit"
-            element={<NewRecipeForm items={recipes} newRecipeData={newRecipeData} />}
+            element={
+              <NewRecipeForm items={recipes} newRecipeData={newRecipeData} />
+            }
           ></Route>
           <Route
             path="/new-recipe"
