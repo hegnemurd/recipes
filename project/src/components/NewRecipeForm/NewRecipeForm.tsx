@@ -20,6 +20,8 @@ const NewRecipeForm = (props: any) => {
 
   const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
 
+  // props.newRecipe = editRecipe;
+
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredImg(e.currentTarget.value);
   };
@@ -42,42 +44,44 @@ const NewRecipeForm = (props: any) => {
     // if statement expression to exclude adding it to props if editRecipe returns undefined
     // ensure defaultValues are passed to App.tsx even if input is untouched
 
-    editRecipe !== undefined
-      ? props.newRecipeData(
-          uniqueId,
-          enteredImg,
-          enteredName,
-          enteredIngredients,
-          editRecipe.img,
-          editRecipe.recipeName,
-          editRecipe.ingredients
-        )
-      : props.newRecipeData(
-          uniqueId,
-          enteredImg,
-          enteredName,
-          enteredIngredients
-        );
+    // editRecipe !== undefined
+    // ?
+    // props.newRecipeData(
+    //     uniqueId,
+    //     enteredImg,
+    //     enteredName,
+    //     enteredIngredients,
+    //     // editRecipe?.img,
+    //     // editRecipe?.recipeName,
+    //     // editRecipe?.ingredients
+    //   )
+    // :
+    props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
+
+    // console.log(editRecipe?.img, editRecipe?.recipeName, editRecipe?.ingredients)
 
     navigate("/");
   };
 
-  return editRecipe !== undefined ? (
+  // return editRecipe !== undefined ? (
+  return (
     <Form className={classes.form} onSubmit={onSubmitHandler}>
       <Form.Group className="mb-3" controlId="formGroupImage">
         <Form.Label className={classes["form-label"]}>Image Link:</Form.Label>
         <Form.Control
-          defaultValue={editRecipe.img}
+          defaultValue={editRecipe?.img || enteredImg}
+          // value={editRecipe?.img || enteredImg}
           onChange={imageChangeHandler}
           type="text"
           placeholder="www.something.com/recipe/image"
           className={classes["form-input"]}
-        ></Form.Control>
+        />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
         <Form.Label className={classes["form-label"]}>Title:</Form.Label>
         <Form.Control
-          defaultValue={editRecipe.recipeName}
+          defaultValue={editRecipe?.recipeName}
+          // value={editRecipe?.recipeName}
           onChange={nameChangeHandler}
           type="name"
           placeholder="Mashed Potato"
@@ -90,7 +94,8 @@ const NewRecipeForm = (props: any) => {
           the example below&#41;
         </Form.Label>
         <Form.Control
-          defaultValue={editRecipe.ingredients}
+          defaultValue={editRecipe?.ingredients}
+          // value={editRecipe?.ingredients}
           onChange={ingredientsChangeHandler}
           as="textarea"
           rows={5}
@@ -104,8 +109,8 @@ const NewRecipeForm = (props: any) => {
         <CancelButton />
       </ButtonToolbar>
     </Form>
-  ) : (
-    <Link to="/new-recipe"></Link>
+    // ) : (
+    //   <Link to="/new-recipe"></Link>
   );
 };
 
