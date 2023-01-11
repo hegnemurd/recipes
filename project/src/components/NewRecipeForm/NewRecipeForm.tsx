@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Link } from "react-router-dom";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
 import CancelButton from "../UI/Buttons/CancelButton";
@@ -20,18 +19,25 @@ const NewRecipeForm = (props: any) => {
 
   const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
 
+  // if editRecipe is not found then give a blank new recipe form to fill out
+
+  // if (editRecipe === undefined) {
+  //   return (setEnteredImg("") setEnteredName("");
+  //   setEnteredIngredients([""]);)
+  // }
+
   // props.newRecipe = editRecipe;
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredImg(e.currentTarget.value);
+    setEnteredImg(e.target.value);
   };
 
   const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredName(e.currentTarget.value);
+    setEnteredName(e.target.value);
   };
 
   const ingredientsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newIngredients = e.currentTarget.value;
+    const newIngredients = e.target.value;
     const newIngArray = newIngredients.split(/[,]+/);
     setEnteredIngredients(newIngArray);
   };
@@ -40,22 +46,8 @@ const NewRecipeForm = (props: any) => {
     event.preventDefault();
     const uniqueId = Math.floor(Math.random() * 1000000).toString();
 
-    // set editRecipe to a type
-    // if statement expression to exclude adding it to props if editRecipe returns undefined
-    // ensure defaultValues are passed to App.tsx even if input is untouched
+    // !!!! ensure all values are returned to App.tsx even if they are untouched
 
-    // editRecipe !== undefined
-    // ?
-    // props.newRecipeData(
-    //     uniqueId,
-    //     enteredImg,
-    //     enteredName,
-    //     enteredIngredients,
-    //     // editRecipe?.img,
-    //     // editRecipe?.recipeName,
-    //     // editRecipe?.ingredients
-    //   )
-    // :
     props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
 
     // console.log(editRecipe?.img, editRecipe?.recipeName, editRecipe?.ingredients)
@@ -63,15 +55,13 @@ const NewRecipeForm = (props: any) => {
     navigate("/");
   };
 
-  // return editRecipe !== undefined ? (
   return (
     <Form className={classes.form} onSubmit={onSubmitHandler}>
       <Form.Group className="mb-3" controlId="formGroupImage">
         <Form.Label className={classes["form-label"]}>Image Link:</Form.Label>
         <Form.Control
-          defaultValue={editRecipe?.img || enteredImg}
-          // value={editRecipe?.img || enteredImg}
           onChange={imageChangeHandler}
+          value={enteredImg || editRecipe?.img}
           type="text"
           placeholder="www.something.com/recipe/image"
           className={classes["form-input"]}
@@ -80,9 +70,8 @@ const NewRecipeForm = (props: any) => {
       <Form.Group className="mb-3" controlId="formGroupName">
         <Form.Label className={classes["form-label"]}>Title:</Form.Label>
         <Form.Control
-          defaultValue={editRecipe?.recipeName}
-          // value={editRecipe?.recipeName}
           onChange={nameChangeHandler}
+          value={enteredName || editRecipe?.recipeName}
           type="name"
           placeholder="Mashed Potato"
           className={classes["form-input"]}
@@ -94,9 +83,8 @@ const NewRecipeForm = (props: any) => {
           the example below&#41;
         </Form.Label>
         <Form.Control
-          defaultValue={editRecipe?.ingredients}
-          // value={editRecipe?.ingredients}
           onChange={ingredientsChangeHandler}
+          value={enteredIngredients || editRecipe?.ingredients}
           as="textarea"
           rows={5}
           type="ingredients"
@@ -109,8 +97,6 @@ const NewRecipeForm = (props: any) => {
         <CancelButton />
       </ButtonToolbar>
     </Form>
-    // ) : (
-    //   <Link to="/new-recipe"></Link>
   );
 };
 
