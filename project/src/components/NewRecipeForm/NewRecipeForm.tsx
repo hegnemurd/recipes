@@ -44,9 +44,10 @@ const NewRecipeForm = (props: any) => {
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const uniqueId = Math.floor(Math.random() * 1000000).toString();
+    // const uniqueId = Math.floor(Math.random() * 1000000).toString();
+    const uniqueId = editRecipe?.id;
 
-    // !!!! ensure all values are returned to App.tsx even if they are untouched
+    // send all form input values across to parent component (App.tsx) even if unchanged
 
     props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
 
@@ -60,21 +61,21 @@ const NewRecipeForm = (props: any) => {
       <Form.Group className="mb-3" controlId="formGroupImage">
         <Form.Label className={classes["form-label"]}>Image Link:</Form.Label>
         <Form.Control
-          onChange={imageChangeHandler}
-          value={enteredImg || editRecipe?.img}
+          className={classes["form-input"]}
           type="text"
           placeholder="www.something.com/recipe/image"
-          className={classes["form-input"]}
+          onChange={imageChangeHandler}
+          value={enteredImg || editRecipe?.img}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
         <Form.Label className={classes["form-label"]}>Title:</Form.Label>
         <Form.Control
-          onChange={nameChangeHandler}
-          value={enteredName || editRecipe?.recipeName}
+          className={classes["form-input"]}
           type="name"
           placeholder="Mashed Potato"
-          className={classes["form-input"]}
+          onChange={nameChangeHandler}
+          value={enteredName || editRecipe?.recipeName}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
@@ -83,13 +84,13 @@ const NewRecipeForm = (props: any) => {
           the example below&#41;
         </Form.Label>
         <Form.Control
-          onChange={ingredientsChangeHandler}
-          value={enteredIngredients || editRecipe?.ingredients}
+          className={classes["form-input"]}
           as="textarea"
           rows={5}
           type="ingredients"
           placeholder="Potatoes, onions, garlic, ..."
-          className={classes["form-input"]}
+          onChange={ingredientsChangeHandler}
+          value={enteredIngredients || editRecipe?.ingredients}
         />
       </Form.Group>
       <ButtonToolbar>

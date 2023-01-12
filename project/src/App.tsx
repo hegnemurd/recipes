@@ -27,7 +27,29 @@ function App() {
       (changedRecipe) => changedRecipe.id === uniqueId
     );
 
+    // let newRecipes = recipes.map((array) => {
+    //   var returnValue = { ...array };
+    //   const emptyArray = [""];
+    //   if (array.id === uniqueId) {
+    //     if (returnValue.img !== undefined && returnValue.img !== "") {
+    //       returnValue.img = enteredImg;
+    //     } else if (
+    //       returnValue.recipeName !== undefined &&
+    //       returnValue.recipeName !== ""
+    //     ) {
+    //       returnValue.recipeName = enteredName;
+    //     } else if (
+    //       returnValue.ingredients !== undefined &&
+    //       returnValue.ingredients !== emptyArray
+    //     ) {
+    //       returnValue.ingredients = enteredIngredients;
+    //     }
+    //   }
 
+    //   return returnValue;
+    // });
+
+    // console.log(newRecipes);
 
     console.log(changedRecipe);
   };
