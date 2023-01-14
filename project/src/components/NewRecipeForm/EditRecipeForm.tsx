@@ -1,36 +1,56 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
 import CancelButton from "../UI/Buttons/CancelButton";
 import classes from "./NewRecipeForm.module.css";
 import SaveButton from "../UI/Buttons/SaveButton";
+import { recipes } from "../../models/Recipes";
 
-const NewRecipeForm = (props: any) => {
-  const [enteredImg, setEnteredImg] = useState("");
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredIngredients, setEnteredIngredients] = useState([""]);
+const EditRecipeForm = (props: any) => {
+  const [editedImg, setEditedImg] = useState("");
+  const [editedName, setEditedName] = useState("");
+  const [editedIngr, setEditedIngr] = useState([""]);
 
   const navigate = useNavigate();
 
+  const params = useParams();
+  const { recipeId } = params;
+
+  const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
+  let uniqueId = "";
+
+  if (editRecipe !== undefined) {
+    uniqueId = editRecipe.id;
+    // editedImg(editRecipe.img);
+    // setEditedName(editRecipe.recipeName);
+    // setEditedIngr(editRecipe.ingredients);
+  } else {
+    navigate("/new-recipe");
+  }
+
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredImg(e.currentTarget.value);
+    setEditedImg(e.currentTarget.value);
   };
 
   const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredName(e.currentTarget.value);
+    setEditedName(e.currentTarget.value);
   };
 
-  const ingredientsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newIngredients = e.currentTarget.value;
-    const newIngArray = newIngredients.split(/[,]+/);
-    setEnteredIngredients(newIngArray);
+  const ingrChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const changedIngr = e.currentTarget.value;
+    const changedIngrArr = changedIngr.split(/[,]+/);
+    setEditedIngr(changedIngrArr);
   };
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const uniqueId = Math.floor(Math.random() * 1000000).toString();
-    props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
+
+    // const uniqueId = Math.floor(Math.random() * 1000000).toString();
+
+    if (editRecipe !== undefined) {
+      props.editedRecipeData(uniqueId, editedImg, editedName, editedIngr);
+    }
 
     navigate("/");
   };
@@ -44,6 +64,7 @@ const NewRecipeForm = (props: any) => {
           type="text"
           placeholder="www.something.com/recipe/image"
           onChange={imageChangeHandler}
+          value={editRecipe?.img}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
@@ -53,7 +74,7 @@ const NewRecipeForm = (props: any) => {
           type="name"
           placeholder="Mashed Potato"
           onChange={nameChangeHandler}
-          // value={enteredName}
+          value={editRecipe?.recipeName}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
@@ -67,8 +88,8 @@ const NewRecipeForm = (props: any) => {
           rows={5}
           type="ingredients"
           placeholder="Potatoes, onions, garlic, ..."
-          onChange={ingredientsChangeHandler}
-          // value={enteredIngredients}
+          onChange={ingrChangeHandler}
+          value={editRecipe?.ingredients}
         />
       </Form.Group>
       <ButtonToolbar>
@@ -79,4 +100,4 @@ const NewRecipeForm = (props: any) => {
   );
 };
 
-export default NewRecipeForm;
+export default EditRecipeForm;

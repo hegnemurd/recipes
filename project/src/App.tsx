@@ -5,6 +5,7 @@ import RecipeList from "./pages/RecipeList";
 import Details from "./pages/Details";
 import { recipes } from "./models/Recipes";
 import NewRecipeForm from "./components/NewRecipeForm/NewRecipeForm";
+import EditRecipeForm from "./components/NewRecipeForm/EditRecipeForm";
 
 function App() {
   const newRecipeData = (
@@ -20,39 +21,21 @@ function App() {
       ingredients: enteredIngredients,
     });
 
-    console.log(uniqueId, enteredImg, enteredName, enteredIngredients);
-    // console.log(editRecipe.img, enteredImg, enteredName, enteredIngredients);
-
-    const changedRecipe = recipes.find(
-      (changedRecipe) => changedRecipe.id === uniqueId
-    );
-
-    // let newRecipes = recipes.map((array) => {
-    //   var returnValue = { ...array };
-    //   const emptyArray = [""];
-    //   if (array.id === uniqueId) {
-    //     if (returnValue.img !== undefined && returnValue.img !== "") {
-    //       returnValue.img = enteredImg;
-    //     } else if (
-    //       returnValue.recipeName !== undefined &&
-    //       returnValue.recipeName !== ""
-    //     ) {
-    //       returnValue.recipeName = enteredName;
-    //     } else if (
-    //       returnValue.ingredients !== undefined &&
-    //       returnValue.ingredients !== emptyArray
-    //     ) {
-    //       returnValue.ingredients = enteredIngredients;
-    //     }
-    //   }
-
-    //   return returnValue;
-    // });
-
-    // console.log(newRecipes);
-
-    console.log(changedRecipe);
+    // console.log(uniqueId, enteredImg, enteredName, enteredIngredients);
   };
+  const editedRecipeData = (
+    uniqueId: string,
+    editedImg: string,
+    editedName: string,
+    editedIngr: string[]
+  ) => {
+    console.log(uniqueId, editedImg, editedName, editedIngr);
+  };
+
+  // console.log(editedRecipeData);
+
+  // console.log(editRecipe.img, enteredImg, enteredName, enteredIngredients);
+
   return (
     <div>
       <Navbar />
@@ -63,7 +46,10 @@ function App() {
           <Route
             path="/recipe-details/:recipeId/edit"
             element={
-              <NewRecipeForm items={recipes} newRecipeData={newRecipeData} />
+              <EditRecipeForm
+                items={recipes}
+                editedRecipeData={editedRecipeData}
+              />
             }
           ></Route>
           <Route
