@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
@@ -20,14 +20,16 @@ const EditRecipeForm = (props: any) => {
   const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
   let uniqueId = "";
 
-  if (editRecipe !== undefined) {
-    uniqueId = editRecipe.id;
-    // editedImg(editRecipe.img);
-    // setEditedName(editRecipe.recipeName);
-    // setEditedIngr(editRecipe.ingredients);
-  } else {
-    navigate("/new-recipe");
-  }
+  useEffect(() => {
+    if (editRecipe !== undefined) {
+      uniqueId = editRecipe.id;
+      setEditedImg(editRecipe.img);
+      setEditedName(editRecipe.recipeName);
+      setEditedIngr(editRecipe.ingredients);
+    } else {
+      navigate("/new-recipe");
+    }
+  }, []);
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditedImg(e.currentTarget.value);
@@ -63,8 +65,8 @@ const EditRecipeForm = (props: any) => {
           className={classes["form-input"]}
           type="text"
           placeholder="www.something.com/recipe/image"
+          defaultValue={editRecipe?.img}
           onChange={imageChangeHandler}
-          value={editRecipe?.img}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
@@ -73,8 +75,8 @@ const EditRecipeForm = (props: any) => {
           className={classes["form-input"]}
           type="name"
           placeholder="Mashed Potato"
+          defaultValue={editRecipe?.recipeName}
           onChange={nameChangeHandler}
-          value={editRecipe?.recipeName}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
@@ -88,8 +90,8 @@ const EditRecipeForm = (props: any) => {
           rows={5}
           type="ingredients"
           placeholder="Potatoes, onions, garlic, ..."
+          defaultValue={editRecipe?.ingredients}
           onChange={ingrChangeHandler}
-          value={editRecipe?.ingredients}
         />
       </Form.Group>
       <ButtonToolbar>
