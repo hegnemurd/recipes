@@ -18,11 +18,15 @@ const EditRecipeForm = (props: any) => {
   const { recipeId } = params;
 
   const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
-  let uniqueId = "";
+
+  let editedId = "";
+
+  if (editRecipe !== undefined) {
+    editedId = editRecipe.id;
+  }
 
   useEffect(() => {
     if (editRecipe !== undefined) {
-      uniqueId = editRecipe.id;
       setEditedImg(editRecipe.img);
       setEditedName(editRecipe.recipeName);
       setEditedIngr(editRecipe.ingredients);
@@ -51,7 +55,7 @@ const EditRecipeForm = (props: any) => {
     // const uniqueId = Math.floor(Math.random() * 1000000).toString();
 
     if (editRecipe !== undefined) {
-      props.editedRecipeData(uniqueId, editedImg, editedName, editedIngr);
+      props.editedRecipeData(editedId, editedImg, editedName, editedIngr);
     }
 
     navigate("/");
