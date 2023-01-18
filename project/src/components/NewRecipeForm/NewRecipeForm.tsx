@@ -53,7 +53,6 @@ const NewRecipeForm = (props: any) => {
           type="name"
           placeholder="Mashed Potato"
           onChange={nameChangeHandler}
-          // value={enteredName}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
@@ -68,7 +67,6 @@ const NewRecipeForm = (props: any) => {
           type="ingredients"
           placeholder="Potatoes, onions, garlic, ..."
           onChange={ingredientsChangeHandler}
-          // value={enteredIngredients}
         />
       </Form.Group>
       <ButtonToolbar>

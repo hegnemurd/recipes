@@ -22,10 +22,7 @@ function App() {
       recipeName: enteredName,
       ingredients: enteredIngredients,
     });
-
-    // console.log(uniqueId, enteredImg, enteredName, enteredIngredients);
   };
-  // const [newRecipes, setNewRecipes] = useState(recipes);
 
   const editedRecipeData = (
     editedId: string,
@@ -44,7 +41,6 @@ function App() {
       console.log("recipe not found");
       return navigate("/");
     }
-    
   };
 
   return (

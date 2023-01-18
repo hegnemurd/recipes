@@ -52,8 +52,6 @@ const EditRecipeForm = (props: any) => {
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    // const uniqueId = Math.floor(Math.random() * 1000000).toString();
-
     if (editRecipe !== undefined) {
       props.editedRecipeData(editedId, editedImg, editedName, editedIngr);
     }
