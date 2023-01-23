@@ -1,37 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
 import CancelButton from "../UI/Buttons/CancelButton";
 import classes from "./NewRecipeForm.module.css";
 import SaveButton from "../UI/Buttons/SaveButton";
+import { useDispatch } from "react-redux";
+
+import {newRecipeActions} from "../../store/new-recipe"
 
 const NewRecipeForm = (props: any) => {
-  const [enteredImg, setEnteredImg] = useState("");
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredIngredients, setEnteredIngredients] = useState([""]);
+  // const [enteredImg, setEnteredImg] = useState("");
+  // const [enteredName, setEnteredName] = useState("");
+  // const [enteredIngredients, setEnteredIngredients] = useState([""]);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredImg(e.currentTarget.value);
-  };
+  //   setEnteredImg(e.currentTarget.value);
+    dispatch(newRecipeActions.newImage(e.currentTarget.value));
+  }
 
   const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredName(e.currentTarget.value);
+    // setEnteredName(e.currentTarget.value);
+    dispatch(newRecipeActions.newName(e.currentTarget.value));
   };
 
   const ingredientsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newIngredients = e.currentTarget.value;
-    const newIngArray = newIngredients.split(/[,]+/);
-    setEnteredIngredients(newIngArray);
+    // const newIngredients = e.currentTarget.value;
+    // const newIngArray = newIngredients.split(/[,]+/);
+    // setEnteredIngredients(newIngArray);
+    dispatch(newRecipeActions.newIngr(e.currentTarget.value));
   };
+
+  // const enteredImg = "";
+  // const enteredName = "";
+  // const enteredIngredients = [""];
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const uniqueId = Math.floor(Math.random() * 1000000).toString();
-    props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
-
+    // props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
+    dispatch(newRecipeActions.handleSubmit());
     navigate("/");
   };
 

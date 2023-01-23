@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import newReducer from "./new";
+import newRecipeSlice from "./new-recipe";
 
 const store = configureStore({
-  reducer: { new: newReducer },
+  reducer: { newRecipe: newRecipeSlice.reducer },
 });
 
 export default store;

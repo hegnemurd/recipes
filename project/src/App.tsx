@@ -6,23 +6,45 @@ import Details from "./pages/Details";
 import { recipes } from "./models/Recipes";
 import NewRecipeForm from "./components/NewRecipeForm/NewRecipeForm";
 import EditRecipeForm from "./components/NewRecipeForm/EditRecipeForm";
+import { useSelector } from "react-redux";
 
 function App() {
   const navigate = useNavigate();
 
-  const newRecipeData = (
-    uniqueId: string,
-    enteredImg: string,
-    enteredName: string,
-    enteredIngredients: string[]
-  ) => {
+  const newId = useSelector((state: any) => state.newRecipe.newId);
+  const newImg = useSelector((state: any) => state.newRecipe.newImg);
+  const newName = useSelector((state: any) => state.newRecipe.newName);
+  const newIngr = useSelector((state: any) => state.newRecipe.newIngr);
+
+  if (
+    newId !== undefined &&
+    newImg !== undefined &&
+    newName !== undefined &&
+    newIngr !== undefined
+  ) {
     recipes.push({
-      id: uniqueId,
-      img: enteredImg,
-      recipeName: enteredName,
-      ingredients: enteredIngredients,
+      id: newId,
+      img: newImg,
+      recipeName: newName,
+      ingredients: newIngr,
     });
-  };
+  } else {
+    console.log(newId);
+  }
+
+  // newRecipeData = (
+  //   newId: string,
+  //   newImg: string,
+  //   newName: string,
+  //   newIngr: string[]
+  // ) => {
+  // recipes.push({
+  //   id: newRecipeData.newId,
+  //   img: newRecipeData.newImg,
+  //   recipeName: newRecipeData.newName,
+  //   ingredients: newRecipeData.newIngr,
+  // });
+  // };
 
   const editedRecipeData = (
     editedId: string,
@@ -59,10 +81,7 @@ function App() {
               />
             }
           ></Route>
-          <Route
-            path="/new-recipe"
-            element={<NewRecipeForm newRecipeData={newRecipeData} />}
-          />
+          <Route path="/new-recipe" element={<NewRecipeForm />} />
         </Routes>
       </main>
     </div>
