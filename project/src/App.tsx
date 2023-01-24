@@ -28,7 +28,7 @@ function App() {
       recipeName: newName,
       ingredients: newIngr,
     });
-  } else {
+  }else {
     console.log(newId);
   }
 

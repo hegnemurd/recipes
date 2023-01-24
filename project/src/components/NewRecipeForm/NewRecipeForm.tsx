@@ -7,41 +7,27 @@ import classes from "./NewRecipeForm.module.css";
 import SaveButton from "../UI/Buttons/SaveButton";
 import { useDispatch } from "react-redux";
 
-import {newRecipeActions} from "../../store/new-recipe"
+import { newRecipeActions } from "../../store/new-recipe";
 
 const NewRecipeForm = (props: any) => {
-  // const [enteredImg, setEnteredImg] = useState("");
-  // const [enteredName, setEnteredName] = useState("");
-  // const [enteredIngredients, setEnteredIngredients] = useState([""]);
-
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEnteredImg(e.currentTarget.value);
+  const imageChangeHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     dispatch(newRecipeActions.newImage(e.currentTarget.value));
-  }
+  };
 
-  const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setEnteredName(e.currentTarget.value);
+  const nameChangeHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     dispatch(newRecipeActions.newName(e.currentTarget.value));
   };
 
-  const ingredientsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const newIngredients = e.currentTarget.value;
-    // const newIngArray = newIngredients.split(/[,]+/);
-    // setEnteredIngredients(newIngArray);
+  const ingredientsChangeHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     dispatch(newRecipeActions.newIngr(e.currentTarget.value));
   };
 
-  // const enteredImg = "";
-  // const enteredName = "";
-  // const enteredIngredients = [""];
-
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    // props.newRecipeData(uniqueId, enteredImg, enteredName, enteredIngredients);
     dispatch(newRecipeActions.handleSubmit());
     navigate("/");
   };
@@ -54,7 +40,7 @@ const NewRecipeForm = (props: any) => {
           className={classes["form-input"]}
           type="text"
           placeholder="www.something.com/recipe/image"
-          onChange={imageChangeHandler}
+          onBlur={imageChangeHandler}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
@@ -63,7 +49,7 @@ const NewRecipeForm = (props: any) => {
           className={classes["form-input"]}
           type="name"
           placeholder="Mashed Potato"
-          onChange={nameChangeHandler}
+          onBlur={nameChangeHandler}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
@@ -77,7 +63,7 @@ const NewRecipeForm = (props: any) => {
           rows={5}
           type="ingredients"
           placeholder="Potatoes, onions, garlic, ..."
-          onChange={ingredientsChangeHandler}
+          onBlur={ingredientsChangeHandler}
         />
       </Form.Group>
       <ButtonToolbar>
