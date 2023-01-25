@@ -13,13 +13,13 @@ const newRecipeSlice = createSlice({
       state.newName = action.payload;
     },
     newIngr(state, action) {
-      const newIngredients = action.payload;
-      const newIngArray = newIngredients.split(/[,]+/);
-      state.newIngr = newIngArray;
+      // const newIngredients = action.payload;
+      state.newIngr = action.payload.split(/[,]+/);
+      // state.newIngr = newIngArray;
     },
     handleSubmit(state) {
-    const uniqueId = Math.floor(Math.random() * 1000000).toString();
-    state.newId = uniqueId;
+      state.newId = Math.floor(Math.random() * 1000000).toString();
+    // state.newId = uniqueId;
     }
   },
 });
