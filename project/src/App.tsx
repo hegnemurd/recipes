@@ -11,26 +11,51 @@ import { useSelector } from "react-redux";
 function App() {
   const navigate = useNavigate();
 
-  const newId = useSelector((state: any) => state.newRecipe.newId);
-  const newImg = useSelector((state: any) => state.newRecipe.newImg);
-  const newName = useSelector((state: any) => state.newRecipe.newName);
-  const newIngr = useSelector((state: any) => state.newRecipe.newIngr);
+  // const newId = useSelector((state: any) => state.newRecipe.newId);
+  // const newImg = useSelector((state: any) => state.newRecipe.newImg);
+  // const newName = useSelector((state: any) => state.newRecipe.newName);
+  // const newIngr = useSelector((state: any) => state.newRecipe.newIngr);
 
-  if (
-    newId !== undefined &&
-    newImg !== undefined &&
-    newName !== undefined &&
-    newIngr !== undefined
-  ) {
-    recipes.push({
-      id: newId,
-      img: newImg,
-      recipeName: newName,
-      ingredients: newIngr,
+  const newRec = useSelector((state: any) => state.newRecipe);
+  
+  // if (
+  //   newId !== undefined &&
+  //   newImg !== undefined &&
+  //   newName !== undefined &&
+  //   newIngr !== undefined
+  // ) {
+       recipes.push({
+      id: newRec.newId,
+      img: newRec.newImg,
+      recipeName: newRec.newName,
+      ingredients: newRec.newIngr,
     });
-  }else {
-    console.log(newId);
-  }
+  // } else {
+  //   console.log(newId); 
+
+  // }
+  // if (
+  //   newId.current === undefined &&
+  //   newImg.current === undefined &&
+  //   newName.current === undefined &&
+  //   newIngr.current === undefined
+  // ) {
+  //   console.log(newId);
+  // } else if (
+  //   newId.current === "" &&
+  //   newImg.current === "" &&
+  //   newName.current === "" &&
+  //   newIngr.current === ""
+  // ) {
+  //   console.log(newId);
+  // } else {
+  //   recipes.push({
+  //     id: newId,
+  //     img: newImg,
+  //     recipeName: newName,
+  //     ingredients: newIngr,
+  //   });
+  // }
 
   // newRecipeData = (
   //   newId: string,
