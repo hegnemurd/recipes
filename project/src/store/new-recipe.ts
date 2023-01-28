@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { recipes } from "../models/Recipes";
+
 const initialNewRecipeState = { newId: "", newName: "", newImg: "", newIngr: [""] };
 
 const newRecipeSlice = createSlice({
@@ -13,13 +15,16 @@ const newRecipeSlice = createSlice({
       state.newName = action.payload;
     },
     newIngr(state, action) {
-      // const newIngredients = action.payload;
       state.newIngr = action.payload.split(/[,]+/);
-      // state.newIngr = newIngArray;
     },
     handleSubmit(state) {
       state.newId = Math.floor(Math.random() * 1000000).toString();
-    // state.newId = uniqueId;
+      recipes.push({
+        id: state.newId,
+        img: state.newImg,
+        recipeName: state.newName,
+        ingredients: state.newIngr,
+      });
     }
   },
 });

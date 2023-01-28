@@ -14,15 +14,15 @@ const NewRecipeForm = (props: any) => {
 
   const navigate = useNavigate();
 
-  const imageChangeHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+  const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(newRecipeActions.newImage(e.currentTarget.value));
   };
 
-  const nameChangeHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+  const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(newRecipeActions.newName(e.currentTarget.value));
   };
 
-  const ingredientsChangeHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+  const ingredientsChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(newRecipeActions.newIngr(e.currentTarget.value));
   };
 
@@ -40,7 +40,7 @@ const NewRecipeForm = (props: any) => {
           className={classes["form-input"]}
           type="text"
           placeholder="www.something.com/recipe/image"
-          onBlur={imageChangeHandler}
+          onChange={imageChangeHandler}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupName">
@@ -49,7 +49,7 @@ const NewRecipeForm = (props: any) => {
           className={classes["form-input"]}
           type="name"
           placeholder="Mashed Potato"
-          onBlur={nameChangeHandler}
+          onChange={nameChangeHandler}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formGroupIngredients">
@@ -63,7 +63,7 @@ const NewRecipeForm = (props: any) => {
           rows={5}
           type="ingredients"
           placeholder="Potatoes, onions, garlic, ..."
-          onBlur={ingredientsChangeHandler}
+          onChange={ingredientsChangeHandler}
         />
       </Form.Group>
       <ButtonToolbar>

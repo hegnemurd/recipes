@@ -6,7 +6,7 @@ import Details from "./pages/Details";
 import { recipes } from "./models/Recipes";
 import NewRecipeForm from "./components/NewRecipeForm/NewRecipeForm";
 import EditRecipeForm from "./components/NewRecipeForm/EditRecipeForm";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 function App() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function App() {
   // const newName = useSelector((state: any) => state.newRecipe.newName);
   // const newIngr = useSelector((state: any) => state.newRecipe.newIngr);
 
-  const newRec = useSelector((state: any) => state.newRecipe);
+  // const newRec = useSelector((state: any) => state.newRecipe);
   
   // if (
   //   newId !== undefined &&
@@ -24,12 +24,7 @@ function App() {
   //   newName !== undefined &&
   //   newIngr !== undefined
   // ) {
-       recipes.push({
-      id: newRec.newId,
-      img: newRec.newImg,
-      recipeName: newRec.newName,
-      ingredients: newRec.newIngr,
-    });
+      
   // } else {
   //   console.log(newId); 
 
