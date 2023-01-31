@@ -18,7 +18,8 @@ const newRecipeSlice = createSlice({
       state.newIngr = action.payload.split(/[,]+/);
     },
     handleSubmit(state) {
-      state.newId = Math.floor(Math.random() * 1000000).toString();
+      // state.newId = Math.floor(Math.random() * 1000000).toString();
+      state.newId = "23";
       recipes.push({
         id: state.newId,
         img: state.newImg,

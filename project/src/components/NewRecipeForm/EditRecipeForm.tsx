@@ -33,7 +33,7 @@ const EditRecipeForm = (props: any) => {
     } else {
       navigate("/new-recipe");
     }
-  }, []);
+  }, [editRecipe, navigate]);
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditedImg(e.currentTarget.value);
