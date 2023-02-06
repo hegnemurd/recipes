@@ -1,8 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { recipes } from "../models/Recipes";
 
 const initialNewRecipeState = { newId: "", newName: "", newImg: "", newIngr: [""] };
+
+// const pushNewRecipes = createAsyncThunk("")
+
+// const thunkActionCreator = (recipeData) => (dispatch, getState) => {
+//   dispatch(someResult()) 
+// }
+// dispatch(thunkActionCreator)
 
 const newRecipeSlice = createSlice({
   name: "newRecipe",
@@ -18,8 +25,7 @@ const newRecipeSlice = createSlice({
       state.newIngr = action.payload.split(/[,]+/);
     },
     handleSubmit(state) {
-      // state.newId = Math.floor(Math.random() * 1000000).toString();
-      state.newId = "23";
+      state.newId = Math.floor(Math.random() * 1000000).toString();
       recipes.push({
         id: state.newId,
         img: state.newImg,
