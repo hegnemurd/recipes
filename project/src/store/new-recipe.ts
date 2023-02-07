@@ -2,14 +2,31 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { recipes } from "../models/Recipes";
 
-const initialNewRecipeState = { newId: "", newName: "", newImg: "", newIngr: [""] };
+const initialNewRecipeState = {
+  newId: "",
+  newName: "",
+  newImg: "",
+  newIngr: [""],
+};
 
 // const pushNewRecipes = createAsyncThunk("")
 
 // const thunkActionCreator = (recipeData) => (dispatch, getState) => {
-//   dispatch(someResult()) 
+//   dispatch(someResult())
 // }
 // dispatch(thunkActionCreator)
+
+// const fetchRecipes = createAsyncThunk("recipes/fetch", async () => {
+//   const response = await fetch("../models/Recipes");
+//   const data = await response.json();
+//   return data;
+// });
+
+// const addNewRecipe = recipeData => dispatch => {
+//   setTimeout(() => {
+//     dispatch(handleSubmit(recipeData))
+//   }, 3000)
+// }
 
 const newRecipeSlice = createSlice({
   name: "newRecipe",
@@ -32,7 +49,7 @@ const newRecipeSlice = createSlice({
         recipeName: state.newName,
         ingredients: state.newIngr,
       });
-    }
+    },
   },
 });
 
