@@ -41,9 +41,10 @@ const newRecipeSlice = createSlice({
     newIngr(state, action) {
       state.newIngr = action.payload.split(/[,]+/);
     },
-    handleSubmit(state) {
-      state.newId = Math.floor(Math.random() * 1000000).toString();
-      recipes.push({
+    handleSubmit(state, action) {
+      state.newId = action.payload;
+      const newRecipesArray = [...recipes];
+      newRecipesArray.push({
         id: state.newId,
         img: state.newImg,
         recipeName: state.newName,

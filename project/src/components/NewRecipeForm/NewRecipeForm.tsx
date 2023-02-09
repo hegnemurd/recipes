@@ -28,7 +28,8 @@ const NewRecipeForm = (props: any) => {
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    dispatch(newRecipeActions.handleSubmit());
+    const newId = Math.floor(Math.random() * 1000000).toString();
+    dispatch(newRecipeActions.handleSubmit(newId));
     navigate("/");
   };
 
