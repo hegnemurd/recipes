@@ -39,12 +39,15 @@ const newRecipeSlice = createSlice({
       state.newName = action.payload;
     },
     newIngr(state, action) {
-      state.newIngr = action.payload.split(/[,]+/);
+      const newData = action.payload;
+      const newSeparate = newData.split(/[,]+/);
+      state.newIngr = newSeparate;
+      // state.newIngr = action.payload.split(/[,]+/);
     },
     handleSubmit(state, action) {
       state.newId = action.payload;
-      const newRecipesArray = [...recipes];
-      newRecipesArray.push({
+      // const newRecipesArray = [...recipes];
+      recipes.push({
         id: state.newId,
         img: state.newImg,
         recipeName: state.newName,
