@@ -51,7 +51,7 @@ const newRecipeSlice = createSlice({
         id: state.newId,
         img: state.newImg,
         recipeName: state.newName,
-        ingredients: state.newIngr,
+        ingredients: [...state.newIngr],
       });
     },
   },
