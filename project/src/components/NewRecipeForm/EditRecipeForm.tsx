@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
 import CancelButton from "../UI/Buttons/CancelButton";
-import classes from "./NewRecipeForm.module.css";
+import classes from "./RecipeForm.module.css";
 import SaveButton from "../UI/Buttons/SaveButton";
 import { recipes } from "../../models/Recipes";
 
-const EditRecipeForm = (props: any) => {
-  const [editedImg, setEditedImg] = useState("");
-  const [editedName, setEditedName] = useState("");
-  const [editedIngr, setEditedIngr] = useState([""]);
+import { editRecipeActions } from "../../store/edit-recipe";
+import { useDispatch } from "react-redux";
 
+const EditRecipeForm = (props: any) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const params = useParams();
@@ -25,35 +25,33 @@ const EditRecipeForm = (props: any) => {
     editedId = editRecipe.id;
   }
 
-  useEffect(() => {
-    if (editRecipe !== undefined) {
-      setEditedImg(editRecipe.img);
-      setEditedName(editRecipe.recipeName);
-      setEditedIngr(editRecipe.ingredients);
-    } else {
-      navigate("/new-recipe");
-    }
-  }, [editRecipe, navigate]);
+  // useEffect(() => {
+  //   if (editRecipe !== undefined) {
+  //     setEditedImg(editRecipe.img);
+  //     setEditedName(editRecipe.recipeName);
+  //     setEditedIngr(editRecipe.ingredients);
+  //   } else {
+  //     navigate("/new-recipe");
+  //   }
+  // }, [editRecipe, navigate]);
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEditedImg(e.currentTarget.value);
+    dispatch(editRecipeActions.editedImg(e.currentTarget.value));
   };
 
   const nameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEditedName(e.currentTarget.value);
+    dispatch(editRecipeActions.editedName(e.currentTarget.value));
   };
 
   const ingrChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const changedIngr = e.currentTarget.value;
-    const changedIngrArr = changedIngr.split(/[,]+/);
-    setEditedIngr(changedIngrArr);
+    dispatch(editRecipeActions.editedIngr(e.currentTarget.value));
   };
 
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
     if (editRecipe !== undefined) {
-      props.editedRecipeData(editedId, editedImg, editedName, editedIngr);
+      dispatch(editRecipeActions.handleSubmit(editedId));
     }
 
     navigate("/");

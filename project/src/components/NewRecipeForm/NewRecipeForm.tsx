@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
 import CancelButton from "../UI/Buttons/CancelButton";
-import classes from "./NewRecipeForm.module.css";
+import classes from "./RecipeForm.module.css";
 import SaveButton from "../UI/Buttons/SaveButton";
 import { useDispatch } from "react-redux";
 
