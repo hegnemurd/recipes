@@ -6,9 +6,9 @@ import Details from "./pages/Details";
 import { recipes } from "./models/Recipes";
 import NewRecipeForm from "./components/NewRecipeForm/NewRecipeForm";
 import EditRecipeForm from "./components/NewRecipeForm/EditRecipeForm";
-// import { useSelector } from "react-redux";
-
-function App() {
+import { connect } from "react-redux";
+// useSelector, 
+function App(props:any) {
   const navigate = useNavigate();
 
   // const newId = useSelector((state: any) => state.newRecipe.newId);
@@ -85,6 +85,7 @@ function App() {
     }
   };
 
+  
   return (
     <div>
       <Navbar />
@@ -100,7 +101,7 @@ function App() {
                 editedRecipeData={editedRecipeData}
               />
             }
-          ></Route>
+            ></Route>
           <Route path="/new-recipe" element={<NewRecipeForm />} />
         </Routes>
       </main>
@@ -108,4 +109,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state:any) => {
+  return {editedId: state.editedId}
+}
+
+export default connect(mapStateToProps)(App);
