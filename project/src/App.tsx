@@ -84,7 +84,6 @@ function App(props:any) {
       return navigate("/");
     }
   };
-
   
   return (
     <div>
