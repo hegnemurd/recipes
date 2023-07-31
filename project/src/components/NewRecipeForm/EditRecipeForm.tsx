@@ -50,9 +50,10 @@ const EditRecipeForm = (props: any) => {
   const onSubmitHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    if (editRecipe !== undefined) {
+    // if (editRecipe !== undefined) {
       dispatch(editRecipeActions.handleSubmit(editedId));
-    }
+      // navigate("/");
+    // }
 
     navigate("/");
   };
