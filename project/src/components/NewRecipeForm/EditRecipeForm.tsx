@@ -20,20 +20,20 @@ const EditRecipeForm = (props: any) => {
   const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
 
   let editedId = "";
+  
+    // useEffect(() => {
+    //   if (editRecipe !== undefined) {
+    //     setEditedImg(editRecipe.img);
+    //     setEditedName(editRecipe.recipeName);
+    //     setEditedIngr(editRecipe.ingredients);
+    //   } else {
+    //     navigate("/new-recipe");
+    //   }
+    // }, [editRecipe, navigate]);
 
-  if (editRecipe !== undefined) {
-    editedId = editRecipe.id;
-  }
-
-  // useEffect(() => {
-  //   if (editRecipe !== undefined) {
-  //     setEditedImg(editRecipe.img);
-  //     setEditedName(editRecipe.recipeName);
-  //     setEditedIngr(editRecipe.ingredients);
-  //   } else {
-  //     navigate("/new-recipe");
-  //   }
-  // }, [editRecipe, navigate]);
+  // if (editRecipe !== undefined) {
+  //   editedId = editRecipe.id;
+  // }
 
   const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(editRecipeActions.editedImg(e.currentTarget.value));

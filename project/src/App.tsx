@@ -7,66 +7,12 @@ import { recipes } from "./models/Recipes";
 import NewRecipeForm from "./components/NewRecipeForm/NewRecipeForm";
 import EditRecipeForm from "./components/NewRecipeForm/EditRecipeForm";
 import { connect } from "react-redux";
-// useSelector, 
-function App(props:any) {
+// import {editedRecipeData} from "./store/edit-recipe";
+
+function App(props: any) {
   const navigate = useNavigate();
 
-  // const newId = useSelector((state: any) => state.newRecipe.newId);
-  // const newImg = useSelector((state: any) => state.newRecipe.newImg);
-  // const newName = useSelector((state: any) => state.newRecipe.newName);
-  // const newIngr = useSelector((state: any) => state.newRecipe.newIngr);
-
-  // const newRec = useSelector((state: any) => state.newRecipe);
-  
-  // if (
-  //   newId !== undefined &&
-  //   newImg !== undefined &&
-  //   newName !== undefined &&
-  //   newIngr !== undefined
-  // ) {
-      
-  // } else {
-  //   console.log(newId); 
-
-  // }
-  // if (
-  //   newId.current === undefined &&
-  //   newImg.current === undefined &&
-  //   newName.current === undefined &&
-  //   newIngr.current === undefined
-  // ) {
-  //   console.log(newId);
-  // } else if (
-  //   newId.current === "" &&
-  //   newImg.current === "" &&
-  //   newName.current === "" &&
-  //   newIngr.current === ""
-  // ) {
-  //   console.log(newId);
-  // } else {
-  //   recipes.push({
-  //     id: newId,
-  //     img: newImg,
-  //     recipeName: newName,
-  //     ingredients: newIngr,
-  //   });
-  // }
-
-  // newRecipeData = (
-  //   newId: string,
-  //   newImg: string,
-  //   newName: string,
-  //   newIngr: string[]
-  // ) => {
-  // recipes.push({
-  //   id: newRecipeData.newId,
-  //   img: newRecipeData.newImg,
-  //   recipeName: newRecipeData.newName,
-  //   ingredients: newRecipeData.newIngr,
-  // });
-  // };
-
-  const editedRecipeData = (
+  const newEditedRecipeData = (
     editedId: string,
     editedImg: string,
     editedName: string,
@@ -84,7 +30,7 @@ function App(props:any) {
       return navigate("/");
     }
   };
-  
+
   return (
     <div>
       <Navbar />
@@ -97,10 +43,10 @@ function App(props:any) {
             element={
               <EditRecipeForm
                 items={recipes}
-                editedRecipeData={editedRecipeData}
+                // editedRecipeData={editedRecipeData}
               />
             }
-            ></Route>
+          ></Route>
           <Route path="/new-recipe" element={<NewRecipeForm />} />
         </Routes>
       </main>
@@ -108,8 +54,8 @@ function App(props:any) {
   );
 }
 
-const mapStateToProps = (state:any) => {
-  return {editedId: state.editedId}
-}
+const mapStateToProps = (state: any) => {
+  return { editedId: state.editedId };
+};
 
 export default connect(mapStateToProps)(App);
