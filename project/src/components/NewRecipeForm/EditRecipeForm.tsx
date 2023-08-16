@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import { ButtonToolbar, Form } from "react-bootstrap";
@@ -18,18 +18,23 @@ const EditRecipeForm = (props: any) => {
   const { recipeId } = params;
 
   const editRecipe = recipes.find((r) => r.id === recipeId);
-
+  // store the edit recipe's values into the state
   // let editedId = "";
 
-  // useEffect(() => {
-  //   if (editRecipe !== undefined) {
-  //     setEditedImg(editRecipe.img);
-  //     setEditedName(editRecipe.recipeName);
-  //     setEditedIngr(editRecipe.ingredients);
-  //   } else {
-  //     navigate("/new-recipe");
-  //   }
-  // }, [editRecipe, navigate]);
+  useEffect(() => {
+    if (editRecipe != null) {
+      dispatch(
+        editRecipeActions.editRecipe({
+          editedId: recipeId,
+          editedImg: editRecipe.img,
+          editedName: editRecipe.recipeName,
+          editedIngr: editRecipe.ingredients,
+        })
+      );
+    } else {
+      navigate("/new-recipe");
+    }
+  }, [recipeId, dispatch, editRecipe, navigate]);
 
   // if (editRecipe !== undefined) {
   //   editedId = editRecipe.id;

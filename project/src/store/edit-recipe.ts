@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useNavigate } from "react-router";
 import { recipes } from "../models/Recipes";
 // import { useParams } from "react-router";
 // import { useDispatch } from "react-redux";
@@ -20,6 +19,13 @@ const editRecipeSlice = createSlice({
   name: "editRecipe",
   initialState: initialEditRecipeState,
   reducers: {
+    editRecipe(state, action) {
+      const { editedId, editedName, editedImg, editedIngr } = action.payload;
+      state.editedId = editedId;
+      state.editedName = editedName;
+      state.editedImg = editedImg;
+      state.editedIngr = editedIngr;
+    },
     editedImg(state, action) {
       state.editedImg = action.payload;
     },
@@ -38,7 +44,7 @@ const editRecipeSlice = createSlice({
         recipe.img = state.editedImg;
         recipe.recipeName = state.editedName;
         recipe.ingredients = [...state.editedIngr];
-        console.log(recipe);
+        // console.log(recipe);
       } else {
         throw new Error("Recipe not found");
       }
