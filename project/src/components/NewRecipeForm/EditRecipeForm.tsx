@@ -17,19 +17,19 @@ const EditRecipeForm = (props: any) => {
   const params = useParams();
   const { recipeId } = params;
 
-  const editRecipe = recipes.find((editRecipe) => editRecipe.id === recipeId);
+  const editRecipe = recipes.find((r) => r.id === recipeId);
 
-  let editedId = "";
-  
-    // useEffect(() => {
-    //   if (editRecipe !== undefined) {
-    //     setEditedImg(editRecipe.img);
-    //     setEditedName(editRecipe.recipeName);
-    //     setEditedIngr(editRecipe.ingredients);
-    //   } else {
-    //     navigate("/new-recipe");
-    //   }
-    // }, [editRecipe, navigate]);
+  // let editedId = "";
+
+  // useEffect(() => {
+  //   if (editRecipe !== undefined) {
+  //     setEditedImg(editRecipe.img);
+  //     setEditedName(editRecipe.recipeName);
+  //     setEditedIngr(editRecipe.ingredients);
+  //   } else {
+  //     navigate("/new-recipe");
+  //   }
+  // }, [editRecipe, navigate]);
 
   // if (editRecipe !== undefined) {
   //   editedId = editRecipe.id;
@@ -51,11 +51,11 @@ const EditRecipeForm = (props: any) => {
     event.preventDefault();
 
     if (editRecipe !== undefined) {
-    dispatch(editRecipeActions.handleSubmit(editedId));
-    navigate("/");
+      dispatch(editRecipeActions.handleSubmit(editRecipe.id));
+      navigate("/");
+    } else {
+      navigate("/");
     }
-
-    navigate("/");
   };
 
   return (

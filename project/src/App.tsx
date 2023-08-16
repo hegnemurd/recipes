@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Nav/Navbar";
 import RecipeList from "./pages/RecipeList";
@@ -7,30 +7,8 @@ import { recipes } from "./models/Recipes";
 import NewRecipeForm from "./components/NewRecipeForm/NewRecipeForm";
 import EditRecipeForm from "./components/NewRecipeForm/EditRecipeForm";
 import { connect } from "react-redux";
-// import {editedRecipeData} from "./store/edit-recipe";
 
 function App(props: any) {
-  const navigate = useNavigate();
-
-  const newEditedRecipeData = (
-    editedId: string,
-    editedImg: string,
-    editedName: string,
-    editedIngr: string[]
-  ) => {
-    const replaceRecipe = recipes.find((replaced) => replaced.id === editedId);
-
-    if (replaceRecipe !== undefined) {
-      replaceRecipe.img = editedImg;
-      replaceRecipe.recipeName = editedName;
-      replaceRecipe.ingredients = editedIngr;
-      return console.log(replaceRecipe);
-    } else {
-      console.log("recipe not found");
-      return navigate("/");
-    }
-  };
-
   return (
     <div>
       <Navbar />
@@ -43,7 +21,6 @@ function App(props: any) {
             element={
               <EditRecipeForm
                 items={recipes}
-                // editedRecipeData={editedRecipeData}
               />
             }
           ></Route>
