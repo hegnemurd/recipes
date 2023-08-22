@@ -50,53 +50,69 @@ const RecipeDetails = (props: Recipe) => {
     //   </Row>
     // </Container>
 
-
     // <Root>
-      <Container>
-        <Grid
-          container
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          style={{ minHeight: "94vh" }}
-        >
-          <Grid item>
-            <Card sx={{ maxHeight: 500, maxWidth: "800", boxShadow: "10" }}>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <CardMedia
-                  sx={{ height: 500, width: 800 }}
-                  image={props.img}
-                  title={props.recipeName}
-                />
-                <Box sx={{ display: "flex", flexDirection: "column" }}>
-                  <CardContent>
-                    <Typography
-                      id="recName"
-                      gutterBottom
-                      variant="h2"
-                      component="div"
-                    >
-                      {props.recipeName}
-                    </Typography>
-                    <Typography id="ingList" component="div">
-                      <ul>
-                        {props.ingredients.map((ingredient: any) => (
-                          <li key={ingredient}>{ingredient}</li>
-                        ))}
-                      </ul>
-                    </Typography>
-                  </CardContent>
-                  <CardActions
-                    sx={{ justifyContent: "center", alignContent: "end" }}
+    <Container>
+      <Grid
+        container
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        style={{ minHeight: "94vh" }}
+      >
+        <Grid item>
+          <Card
+            sx={{
+              maxHeight: 500,
+              maxWidth: "800",
+              boxShadow: "10",
+              // border: "3px solid #ae45ff",
+              borderRadius: "20px",
+            }}
+          >
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+              <CardMedia
+                sx={{ height: 500, width: 800 }}
+                image={props.img}
+                title={props.recipeName}
+              />
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <CardContent>
+                  <Typography
+                    id="recName"
+                    gutterBottom
+                    variant="h2"
+                    component="div"
                   >
-                    <Button variant="outlined">Outlined</Button>
-                  </CardActions>
-                </Box>
+                    {props.recipeName}
+                  </Typography>
+                  <Typography id="ingList" component="div">
+                    <ul>
+                      {props.ingredients.map((ingredient: any) => (
+                        <li key={ingredient}>{ingredient}</li>
+                      ))}
+                    </ul>
+                  </Typography>
+                </CardContent>
+                <CardActions
+                  sx={{ justifyContent: "center", alignContent: "end" }}
+                >
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      color: "#ae45ff",
+                      border: "1px solid #ae45ff",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Back
+                  </Button>
+                </CardActions>
               </Box>
-            </Card>
-          </Grid>
+            </Box>
+          </Card>
         </Grid>
-      </Container>
+      </Grid>
+    </Container>
     // </Root>
   );
 };
