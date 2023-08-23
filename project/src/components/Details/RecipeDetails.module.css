@@ -1,4 +1,4 @@
-/* .container {
+.container {
   border: 2px solid #ae45ff;
   border-radius: 20px;
   margin-top: 10px;
@@ -24,16 +24,4 @@
 
 .li {
   padding: 2.5%;
-} */
-
-Card {
-  margin: 100px;
-}
-
-#potato {
-   height: 140;
-}
-
-#ingList {
-  color: "text.secondary";
 }
